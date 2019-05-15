@@ -68,53 +68,7 @@ class Counter extends React.Component {
   }
 }
 
-class Todo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos: [{
-        completed: false,
-        text: '1'
-      }, {
-        completed: false,
-        text: '2'
-      }, {
-        completed: false,
-        text: '3'
-      }]
-    };
-    this.toggleComplete = this.toggleComplete.bind(this);
-  }
 
-  toggleComplete(todo, index) {
-    // console.log(todo, index)
-    var list = [...this.state.todos];
-    list = list.map((todo, i) => {
-      if (Number(index) === Number(i)) {
-        return ({
-          ...todo,
-          completed: !todo.completed,
-        })
-      }
-      return todo;
-    })
-    console.log(list);
-    this.setState((state, props) => ({
-      todos: list
-    }), () => console.log('called'));
-  }
-
-  render() {
-    return (
-      <div>
-        <ul>
-          {this.state.todos.map((todo, index) =>
-            <li style={{ textDecoration: todo.completed ? 'line-through':'none' }} onClick={() => this.toggleComplete(todo, index)} key={index}>{todo.text}</li>)}
-        </ul>
-      </div>
-    );
-  }
-}
 
 ReactDOM.render(
   // Element,
@@ -122,7 +76,7 @@ ReactDOM.render(
   // <Event />,
   // <WelcomeComponent name='abc'/>,
   // <Greeting isLoggedIn={false}/>,
-  // <Counter />,
-  <Todo />,
+  <Counter />,
+  // <Todo />,
   document.getElementById('root')
 );
